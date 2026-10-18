@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import hero from "../../../assets/images/hero.jpg";
+import hero from "../../../assets/images/hero.jpeg";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -60,7 +60,7 @@ export default function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-[#0B0D10]/35" />
 
       {/* Content */}
-      <div className="relative z-[2] mx-auto w-full max-w-7xl px-5 pb-20 sm:px-8 md:pb-24 lg:pb-32">
+      < div className="relative z-[2] mx-auto w-full max-w-7xl px-5 pb-44 sm:px-8 md:pb-48 lg:pb-60">
         <motion.p
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

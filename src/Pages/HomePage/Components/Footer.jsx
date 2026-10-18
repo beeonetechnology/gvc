@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logoImage from "../../../assets/images/logo.png";
 
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };
@@ -24,7 +25,7 @@ const services = [
   { label: "Payroll Management" },
 ];
 
-const EMAILS = ["goldenvillagegvc@gmail.com", "gvcqatar@gmail.com"];
+const EMAILS = ["marketing@gvcqatar.com"];
 
 const linkClass =
   "inline-block text-[15px] text-[#C9CCD1] transition hover:translate-x-1 hover:text-[#A9A92F] focus:outline-none focus-visible:text-[#A9A92F] focus-visible:underline motion-reduce:transition-none motion-reduce:hover:translate-x-0";
@@ -42,7 +43,8 @@ const ColumnTitle = ({ children }) => (
   </h3>
 );
 
-export default function Footer({ logo, poweredByHref }) {
+export default function Footer({ poweredByHref }) {
+  const logo = logoImage;
   return (
     <footer style={sans} className="relative overflow-hidden bg-[#0B0D10] text-white">
       {/* ring motif */}
@@ -67,7 +69,11 @@ export default function Footer({ logo, poweredByHref }) {
               aria-label="Golden Village Contracting home"
             >
               {logo ? (
-                <img src={logo} alt="" className="h-16 w-16 rounded-full object-contain" />
+               <img
+  src={logo}
+  alt="Golden Village Contracting"
+  className="h-14 w-auto max-w-[220px] object-contain sm:h-16"
+/>
               ) : (
                 <span
                   className="flex h-16 w-16 items-center justify-center rounded-full border-[3px] border-[#C9CCD1]"

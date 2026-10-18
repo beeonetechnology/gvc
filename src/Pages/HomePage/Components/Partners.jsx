@@ -19,7 +19,7 @@ import QDSBG from "../../../assets/images/Partners/qd.png";
 import shelter from "../../../assets/images/Partners/shelter.png";
 import tadmur from "../../../assets/images/Partners/tadmur.png";
 import takyeef from "../../../assets/images/Partners/takyeef.png";
-
+import  upfc from '../../../assets/images/Partners/upfc.png';
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };
 
@@ -45,10 +45,15 @@ const partners = [
   { name: "Shelter", logo: shelter },
   { name: "Tadmur", logo: tadmur },
   { name: "Takyeef", logo: takyeef },
+  { name: "UPFC", logo: upfc },
 ];
 
 const rowA = partners.slice(0, 6);
 const rowB = partners.slice(6);
+
+/** Base duration for row A, in seconds. Row B is scaled to match this visual speed. */
+const BASE_SPEED = 50;
+const ROW_B_DURATION = (BASE_SPEED * rowB.length) / rowA.length;
 
 /** Logo image with automatic fallback to a text wordmark */
 function PartnerMark({ partner, decorative }) {
@@ -126,12 +131,21 @@ export default function Partners() {
         .gvc-marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
         .gvc-marquee:hover .gvc-track, .gvc-marquee:focus-within .gvc-track { animation-play-state: paused; }
 
-        /* Logos: calm grey on devices with hover, full colour on hover.
+        /* Logos: calm grey on small screens with hover, full colour on hover.
+           Laptop / desktop (lg and up) always shows full colour.
            Touch devices have no hover, so they always show full colour. */
         .gvc-logo { transition: filter .3s ease, opacity .3s ease, transform .3s ease; }
-        @media (hover: hover) {
+
+        /* Small screens (below lg): grey by default on hover-capable devices */
+        @media (max-width: 1023px) and (hover: hover) {
           .gvc-logo { filter: grayscale(1); opacity: .7; }
           .group:hover .gvc-logo { filter: none; opacity: 1; transform: scale(1.04); }
+        }
+
+        /* Laptop / desktop (lg and up): always full colour */
+        @media (min-width: 1024px) {
+          .gvc-logo { filter: none; opacity: 1; }
+          .group:hover .gvc-logo { transform: scale(1.04); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -165,10 +179,10 @@ export default function Partners() {
           </p>
         </div>
 
-        {/* Marquees */}
+        {/* Marquees — both rows scroll at the same visual speed */}
         <div className="mt-10 space-y-2 sm:mt-14 sm:space-y-3">
-          <MarqueeRow items={rowA} duration={50} />
-          <MarqueeRow items={rowB} reverse duration={42} />
+          <MarqueeRow items={rowA} duration={BASE_SPEED} />
+          <MarqueeRow items={rowB} reverse duration={ROW_B_DURATION} />
         </div>
       </div>
     </section>

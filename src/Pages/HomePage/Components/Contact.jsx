@@ -3,10 +3,9 @@ import React, { useState } from "react";
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };
 
-const EMAILS = ["goldenvillagegvc@gmail.com", "gvcqatar@gmail.com"];
+const EMAILS = ["marketing@gvcqatar.com"];
 const PHONES = [
   { label: "+974 6622 2725", tel: "+97466222725" },
-  { label: "+974 7724 2724", tel: "+97477242724" },
   { label: "+974 7724 2711", tel: "+97477242711" },
 ];
 const WHATSAPP = "https://wa.me/97466222725";

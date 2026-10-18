@@ -10,9 +10,9 @@ import company from '../../assets/images/companyimage.jpg'
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };
 
-const PHONE = "+974 7724 2724";
-const PHONE_TEL = "+97477242724";
-const EMAIL = "goldenvillagegvc@gmail.com";
+const PHONE = "+974 66222725";
+const PHONE_TEL = "+97466222725";
+const EMAIL = "marketing@gvcqatar.com";
 
 const Star = ({ className = "" }) => (
   <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="currentColor">

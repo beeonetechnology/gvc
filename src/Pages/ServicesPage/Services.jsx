@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Navbar from "../HomePage/Components/Navbar";
 import PageHeader from "./Components/PageHeader";
 import Footer from "../HomePage/Components/Footer";
+import manpowerimg from '../../assets/images/manpower.jpeg'
+import cleaning from '../../assets/images/cleaning.jpeg'
+import realestate from '../../assets/images/realestate.jpeg'
 
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };
@@ -111,6 +114,28 @@ const manpower = [
         <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" />
       </Icon>
     ),
+  },
+];
+
+/* ------------------------- What we do (new) ------------------------- */
+const whatWeDo = [
+  {
+    title: "Manpower",
+    text: "Golden Village Contracting (GVC) supplies skilled and semi-skilled manpower — electricians, plumbers, welders, technicians and general labour — ready for deployment across the UAE.",
+    image: manpowerimg,
+    alt: "Skilled manpower team on site",
+  },
+  {
+    title: "Cleaning",
+    text: "Professional cleaning services for offices, villas, apartments and commercial spaces — deep cleaning, periodic maintenance and post-construction cleanup done right.",
+    image: cleaning,
+    alt: "Professional cleaning service",
+  },
+  {
+    title: "Real Estate",
+    text: "Buying, selling and leasing made simple. GVC helps you find the right property or the right tenant — with transparent advice and end-to-end documentation support.",
+    image: realestate,
+    alt: "Real estate property",
   },
 ];
 
@@ -232,6 +257,118 @@ function ServiceList({ items, dark = false }) {
   );
 }
 
+/* --------- Expanding image card (same interaction as Why choose us) --------- */
+function WhatWeDoCard({ item, active, onActivate, index }) {
+  const on = active;
+
+  return (
+    <li
+      tabIndex={0}
+      onMouseEnter={onActivate}
+      onFocus={onActivate}
+      onClick={onActivate}
+      className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl outline-none ring-1 transition-all duration-700 ease-out focus-visible:ring-2 focus-visible:ring-[#A9A92F] lg:min-w-0 motion-reduce:transition-none ${
+        on
+          ? "bg-[#0B0D10] text-white ring-[#0B0D10] lg:flex-[2.4]"
+          : "bg-[#F4F5F7] text-[#0B0D10] ring-[#0B0D10]/5 lg:flex-1"
+      }`}
+    >
+      {/* ghost ring */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 600 600"
+        className={`pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 text-[#C9CCD1] transition-opacity duration-700 ${
+          on ? "opacity-[0.12]" : "opacity-0"
+        }`}
+        fill="none"
+        stroke="currentColor"
+      >
+        <circle cx="300" cy="300" r="290" strokeWidth="10" />
+        <circle cx="300" cy="300" r="250" strokeWidth="1.5" />
+      </svg>
+
+      {/* Image header */}
+      <div className="relative h-48 w-full shrink-0 overflow-hidden sm:h-56 lg:h-64">
+        <img
+          src={item.image}
+          alt={item.alt}
+          loading="lazy"
+          className={`h-full w-full object-cover transition-transform duration-[1200ms] ease-out ${
+            on ? "scale-105" : "scale-100"
+          }`}
+        />
+        <div
+          className={`absolute inset-0 bg-gradient-to-t from-[#0B0D10]/80 via-[#0B0D10]/10 to-transparent transition-opacity duration-700 ${
+            on ? "opacity-90" : "opacity-70"
+          }`}
+        />
+        <span
+          className={`absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-colors duration-500 ${
+            on ? "bg-[#A9A92F] text-[#0B0D10]" : "bg-white/90 text-[#0B0D10]"
+          }`}
+          style={sans}
+        >
+          0{index + 1}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="relative flex flex-1 flex-col p-7 sm:p-9">
+        <h3 style={serif} className="text-3xl font-medium leading-tight sm:text-4xl lg:text-[2rem]">
+          {item.title}
+        </h3>
+        <p
+          className={`mt-4 max-w-md text-base leading-relaxed transition-all duration-700 lg:overflow-hidden ${
+            on
+              ? "text-[#C9CCD1] lg:max-h-[12rem] lg:translate-y-0 lg:opacity-100"
+              : "text-[#3B424C] lg:max-h-0 lg:translate-y-3 lg:opacity-0"
+          }`}
+        >
+          {item.text}
+        </p>
+      </div>
+    </li>
+  );
+}
+
+/* ------------------------------- What we do ------------------------------- */
+function WhatWeDoSection() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <section
+      className="mx-auto max-w-7xl px-5 pt-20 pb-10 sm:px-8 sm:pt-24 sm:pb-12 lg:px-12 lg:pt-28 lg:pb-14"
+      aria-labelledby="what-we-do-heading"
+    >
+      <div className="max-w-2xl">
+        <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#4A80C4]">
+          <span className="h-px w-8 bg-[#4A80C4]" aria-hidden="true" />
+          What we do
+        </p>
+        <h2
+          id="what-we-do-heading"
+          style={serif}
+          className="mt-5 text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
+        >
+          Our services
+        </h2>
+      </div>
+
+      <ul className="mt-12 flex flex-col gap-4 lg:mt-16 lg:h-[34rem] lg:flex-row lg:gap-5">
+        {whatWeDo.map((item, i) => (
+          <WhatWeDoCard
+            key={item.title}
+            item={item}
+            index={i}
+            active={active === i}
+            onActivate={() => setActive(i)}
+          />
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 const SectionHead = ({ label, title, dark }) => (
   <div className="mb-10 max-w-2xl lg:mb-14">
     <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#4A80C4]">
@@ -251,8 +388,11 @@ export default function ServicesPage() {
       <PageHeader title="Our services" current="Services" description="Trust the experience." />
 
       <main>
+        {/* What we do — NEW */}
+        <WhatWeDoSection />
+
         {/* Contracting */}
-        <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28" aria-label="Contracting and maintenance services">
+        <section className="mx-auto max-w-7xl px-5 pt-10 pb-20 sm:px-8 sm:pt-12 sm:pb-24 lg:px-12 lg:pt-14 lg:pb-28" aria-label="Contracting and maintenance services">
           <SectionHead label="Contracting & maintenance" title="Skilled work, finished properly." />
           <ServiceList items={contracting} />
         </section>
