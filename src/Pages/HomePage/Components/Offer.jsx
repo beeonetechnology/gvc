@@ -77,7 +77,7 @@ const offers = [
   },
 ];
 
-function CardImage({ src, alt, icon }) {
+function CardImage({ src, alt, icon, priority = false }) {
   const [failed, setFailed] = useState(false);
 
   if (failed || !src) {
@@ -92,7 +92,11 @@ function CardImage({ src, alt, icon }) {
     <img
       src={src}
       alt={alt}
-      loading="lazy"
+      width={800}
+      height={533}
+      decoding="async"
+      fetchPriority={priority ? "high" : "low"}
+      draggable="false"
       onError={() => setFailed(true)}
       className="h-full w-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
     />
@@ -122,10 +126,7 @@ export default function WhatWeOffer({
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#4A80C4]">
-              <span
-                className="h-px w-8 bg-[#4A80C4]"
-                aria-hidden="true"
-              />
+              <span className="h-px w-8 bg-[#4A80C4]" aria-hidden="true" />
               What we offer
             </p>
 
@@ -150,9 +151,7 @@ export default function WhatWeOffer({
             <li
               key={o.key}
               className="sticky md:static"
-              style={{
-                top: `calc(5.5rem + ${i * 0.75}rem)`,
-              }}
+              style={{ top: `calc(5.5rem + ${i * 0.75}rem)` }}
             >
               <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-[#14181D] shadow-2xl shadow-black/60 ring-1 ring-white/10 transition duration-300 hover:ring-[#A9A92F]/60 md:shadow-none">
 
@@ -162,6 +161,7 @@ export default function WhatWeOffer({
                     src={images[o.key] || o.image}
                     alt={o.title}
                     icon={o.icon}
+                    priority={i < 2}
                   />
 
                   {/* Mobile counter */}

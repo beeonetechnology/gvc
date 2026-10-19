@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import logo from "../../../assets/images/logo.png"; 
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -62,10 +63,15 @@ export default function Navbar() {
           transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
           to="/"
           aria-label="GVC home"
-          style={{ color: textColor }}
-          className="justify-self-start text-[22px] font-extrabold tracking-[-0.06em] no-underline"
+          className="justify-self-start flex items-center no-underline"
         >
-          GVC
+          <motion.img
+            src={logo}
+            alt="GVC"
+            animate={{ height: scrolled ? 36 : 48 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="w-auto object-contain"
+          />
         </MotionLink>
 
         {/* Desktop links */}
@@ -94,10 +100,7 @@ export default function Navbar() {
               </MotionLink>
             );
           })}
-       
         </nav>
-
-     
 
         {/* Hamburger */}
         <button

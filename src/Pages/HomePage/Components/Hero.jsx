@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import hero from "../../../assets/images/hero.jpeg";
+import hero from "../../../assets/images/hero.jpg";
 
 const EASE = [0.22, 1, 0.36, 1];
 

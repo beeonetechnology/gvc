@@ -19,10 +19,10 @@ import QDSBG from "../../../assets/images/Partners/qd.png";
 import shelter from "../../../assets/images/Partners/shelter.png";
 import tadmur from "../../../assets/images/Partners/tadmur.png";
 import takyeef from "../../../assets/images/Partners/takyeef.png";
-import  upfc from '../../../assets/images/Partners/upfc.png';
+import upfc from "../../../assets/images/Partners/upfc.png";
+
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };
-
 
 const partners = [
   { name: "Voltas", logo: voltas },
@@ -74,8 +74,10 @@ function PartnerMark({ partner, decorative }) {
     <img
       src={partner.logo}
       alt={decorative ? "" : partner.name}
-      loading="lazy"
+      width={256}
+      height={128}
       decoding="async"
+      fetchPriority={decorative ? "low" : "high"}
       draggable="false"
       onError={() => setFailed(true)}
       className="gvc-logo max-h-full max-w-full object-contain"
@@ -95,8 +97,6 @@ function Tile({ partner, decorative }) {
 }
 
 function MarqueeRow({ items, reverse = false, duration = 40 }) {
-  // Repeat the list so one group is always wider than the screen.
-  const group = [...items, ...items, ...items];
   return (
     <div className="gvc-marquee relative overflow-hidden py-2">
       <div
@@ -105,8 +105,8 @@ function MarqueeRow({ items, reverse = false, duration = 40 }) {
       >
         {[0, 1].map((g) => (
           <div key={g} className="flex shrink-0" aria-hidden={g === 1 ? "true" : undefined}>
-            {group.map((p, i) => (
-              <Tile key={`${g}-${p.name}-${i}`} partner={p} decorative={g === 1 || i >= items.length} />
+            {items.map((p, i) => (
+              <Tile key={`${g}-${p.name}-${i}`} partner={p} decorative={g === 1} />
             ))}
           </div>
         ))}
