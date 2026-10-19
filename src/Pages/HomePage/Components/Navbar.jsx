@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import logo from "../../../assets/images/logo.png"; 
+import logo from "../../../assets/images/logo.png"; // adjust path to match your folder structure
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -68,7 +68,7 @@ export default function Navbar() {
           <motion.img
             src={logo}
             alt="GVC"
-            animate={{ height: scrolled ? 36 : 48 }}
+            animate={{ height: scrolled ? 24 : 30 }}
             transition={{ duration: 0.4, ease: EASE }}
             className="w-auto object-contain"
           />
