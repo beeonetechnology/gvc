@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import logo from "../../../assets/images/logo.png"; // adjust path to match your folder structure
+import logo from "../../../assets/images/logo1.png"; 
 
 const EASE = [0.22, 1, 0.36, 1];
 

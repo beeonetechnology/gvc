@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import manpowerImage from "../../../assets/images/manpower-supply.jpg";
 import recruitmentImage from "../../../assets/images/recruitment-services.jpg";
-import payrollImage from "../../../assets/images/payroll-management.jpg";
+import cleaningImage from "../../../assets/images/clng.jpeg";
 import hrImage from "../../../assets/images/hr-consulting.jpg";
 
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
@@ -50,19 +50,18 @@ const offers = [
       </Icon>
     ),
   },
-  {
-    key: "payroll",
-    title: "Payroll Management",
-    text: "We provide efficient payroll management services with accuracy and reliability.",
-    image: payrollImage,
-    icon: (
-      <Icon>
-        <rect x="2" y="6" width="20" height="12" rx="2" />
-        <circle cx="12" cy="12" r="2.5" />
-        <path d="M6 12h.01M18 12h.01" />
-      </Icon>
-    ),
-  },
+{
+  key: "cleaning",
+  title: "Cleaning Services",
+  text: "We provide professional residential and commercial cleaning services, delivering hygienic, spotless, and well-maintained spaces.",
+  image: cleaningImage,
+  icon: (
+    <Icon>
+      <path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 17l-1.8-4.5L5.5 10.7l4.7-1.8L12 3z" />
+      <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z" />
+    </Icon>
+  ),
+},
   {
     key: "hr",
     title: "HR Consulting",

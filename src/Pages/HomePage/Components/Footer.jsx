@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoImage from "../../../assets/images/logo.png";
+import logoImage from "../../../assets/images/logo1.png";
 
 const serif = { fontFamily: "'Newsreader', Georgia, serif" };
 const sans = { fontFamily: "'Manrope', system-ui, sans-serif" };

@@ -20,29 +20,27 @@ const Icon = ({ children }) => (
 
 const services = [
   {
-    title: "Electrical Works",
-    text: "We provide expert electrical works, ensuring safety, efficiency, and high-quality solutions.",
-    icon: <Icon><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" /></Icon>,
-  },
-  {
-    title: "Plumbing Works",
-    text: "We offer professional plumbing works, ensuring reliability, efficiency, and high-quality solutions.",
-    icon: <Icon><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z" /></Icon>,
-  },
-  {
-    title: "Painting Works",
-    text: "We provide expert painting works, delivering quality, precision, and long-lasting finishes.",
+    title: "MEP Works",
+    text: "Complete mechanical, electrical, and plumbing solutions designed for safety, efficiency, and reliable building performance.",
     icon: (
       <Icon>
-        <rect x="3" y="3" width="14" height="5" rx="1" />
-        <path d="M17 5.5h2a1 1 0 0 1 1 1V10a1 1 0 0 1-1 1h-7v3" />
-        <rect x="10" y="14" width="4" height="7" rx="1" />
+        <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+      </Icon>
+    ),
+  },
+  {
+    title: "Civil Works",
+    text: "Professional civil construction, renovation, and structural works delivered with quality, precision, and lasting durability.",
+    icon: (
+      <Icon>
+        <path d="M3 21h18M5 21V7l7-4 7 4v14" />
+        <path d="M9 21v-5h6v5M9 9h.01M15 9h.01M9 13h.01M15 13h.01" />
       </Icon>
     ),
   },
   {
     title: "Cleaning Services",
-    text: "We offer professional cleaning services, ensuring hygiene, efficiency, and spotless results every time.",
+    text: "Reliable residential and commercial cleaning solutions that maintain hygienic, fresh, and welcoming spaces.",
     icon: (
       <Icon>
         <path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3z" />
@@ -51,25 +49,36 @@ const services = [
     ),
   },
   {
-    title: "Carpentry Service",
-    text: "We provide expert carpentry services, delivering precision, quality, and durable craftsmanship.",
+    title: "Property Management",
+    text: "Comprehensive property management services covering maintenance, tenant coordination, and day-to-day property operations.",
     icon: (
       <Icon>
-        <path d="M13 5l3-3 6 6-3 3-6-6z" />
-        <path d="M14 9L4 19a1.4 1.4 0 0 0 2 2l10-10" />
+        <path d="M3 21h18M5 21V8l7-5 7 5v13" />
+        <path d="M9 21v-6h6v6M9 10h.01M15 10h.01" />
       </Icon>
     ),
   },
   {
-    title: "Partitions and Ceilings",
-    text: "We offer expert partitions and ceilings solutions, ensuring durability, precision, and aesthetic appeal.",
+    title: "Real Estate",
+    text: "Explore property opportunities with professional assistance in buying, selling, renting, and finding the right investment.",
     icon: (
       <Icon>
-        <path d="M12 3l9 5-9 5-9-5 9-5z" />
-        <path d="M3 13l9 5 9-5" />
+        <path d="M3 11l9-8 9 8" />
+        <path d="M5 10v11h14V10M9 21v-6h6v6" />
+        <path d="M9 11h6" />
       </Icon>
     ),
   },
+  {
+  title: "Interior Design",
+  text: "Thoughtfully designed interior spaces that combine functionality, comfort, and modern aesthetics for residential and commercial properties.",
+  icon: (
+    <Icon>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M3 10h18M10 10v11M14 3v7" />
+    </Icon>
+  ),
+},
 ];
 
 const PAD = 20; // matches px-5 on the mobile slider
